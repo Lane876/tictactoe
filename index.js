@@ -1,3 +1,5 @@
+const {spawn} = require('child_process');
+
 let P = "X";
 let N = "O";
 let C = 0;
@@ -72,6 +74,7 @@ i.on("data", function (k) {
   if (C > 8) {
     o.write("It's a draw!\n");
     p.exit();
+
   }
 });
 d();
