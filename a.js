@@ -163,7 +163,7 @@ function startGame() {
             boardSchema(result.position, player);
             returnBoard(result.position);
             if (checkWin(player) === true) {
-              if ((player = "X")) {
+              if ((player === "X")) {
                 console.log(`${first} wins!`);
                 prompt.get(["Rematch"], function (err, res) {
                   var resp = res.Rematch;
