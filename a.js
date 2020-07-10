@@ -36,6 +36,15 @@ function startGame() {
         7: " ",
         8: " ",
         9: " ",
+        '1 1': " ",
+        '2 1': " ",
+        '3 1': " ",
+        '1 2': " ",
+        '2 2': " ",
+        '3 2': " ",
+        '1 3': " ",
+        '2 3': " ",
+        '3 3': " ",
       };
 
       function boardSchema(position, mark) {
@@ -75,7 +84,7 @@ function startGame() {
 
           process.exit(1);
         }
-        return isInt(position) && board[position] === " ";
+        return (position) && board[position] === " ";
       }
 
       var winCombinations = [
@@ -123,8 +132,36 @@ function startGame() {
         prompt.start();
         prompt.get(["position"], function (err, result) {
           if (validateMove(result.position, player) === true) {
+            if(result.position === '1 1'){
+              result.position = 1
+            }
+            if(result.position === '2 1'){
+              result.position = 2
+            }
+            if(result.position === '3 1'){
+              result.position = 3
+            }
+            if(result.position === '1 2'){
+              result.position = 4
+            }
+            if(result.position === '2 2'){
+              result.position = 5
+            }
+            if(result.position === '3 2'){
+              result.position = 6
+            }
+            if(result.position === '1 3'){
+              result.position = 7
+            }
+            if(result.position === '2 3'){
+              result.position = 8
+            }
+            if(result.position === '3 3'){
+              result.position = 9
+            }
+           
             boardSchema(result.position, player);
-            returnBoard();
+            returnBoard(result.position);
             if (checkWin(player) === true) {
               if ((player = "X")) {
                 console.log(`${first} wins!`);
