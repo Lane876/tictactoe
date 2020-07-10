@@ -14,14 +14,6 @@ function startGame() {
     console.log("  Player O: " + result.PlayerO);
     if (result.PlayerX && result.PlayerO) {
       console.log(
-        // `Game started: ${result.PlayerX} has the first move \n` +
-        //   " 1 | 2 | 3 \n" +
-        //   " --------- \n" +
-        //   " 4 | 5 | 6 \n" +
-        //   " --------- \n" +
-        //   " 7 | 8 | 9 \n"
-
-
         `Game started: ${result.PlayerX} has the first move \n` +
 
          "    1   2   3 \n"+
@@ -97,7 +89,6 @@ function startGame() {
         [3, 5, 7],
       ];
 
-      // Determins if the passed in player has three in a row
       function checkWin(player) {
         var i, j, markCount;
         for (i = 0; i < winCombinations.length; i++) {
