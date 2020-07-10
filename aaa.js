@@ -14,12 +14,24 @@ function startGame() {
     console.log("  Player O: " + result.PlayerO);
     if (result.PlayerX && result.PlayerO) {
       console.log(
+        // `Game started: ${result.PlayerX} has the first move \n` +
+        //   " 1 | 2 | 3 \n" +
+        //   " --------- \n" +
+        //   " 4 | 5 | 6 \n" +
+        //   " --------- \n" +
+        //   " 7 | 8 | 9 \n"
+
+
         `Game started: ${result.PlayerX} has the first move \n` +
-          " 1 | 2 | 3 \n" +
-          " --------- \n" +
-          " 4 | 5 | 6 \n" +
-          " --------- \n" +
-          " 7 | 8 | 9 \n"
+
+         "    1   2   3 \n"+
+          "   ~~~~~~~~~~~\n"+
+        "1 |   |   |   |\n"+
+          "   ~~~~~~~~~~~\n"+
+        "2 |   |   |   |\n"+
+          "   ~~~~~~~~~~~\n"+
+        "3 |   |   |   |\n"+
+          "   ~~~~~~~~~~~\n"
       );
 
       var board = {
@@ -41,40 +53,25 @@ function startGame() {
       function returnBoard() {
         console.log(
           "\n" +
-            " " +
-            board[1] +
-            " | " +
-            board[2] +
-            " | " +
-            board[3] +
-            "\n" +
-            " ---------\n" +
-            " " +
-            board[4] +
-            " | " +
-            board[5] +
-            " | " +
-            board[6] +
-            "\n" +
-            " ---------\n" +
-            " " +
-            board[7] +
-            " | " +
-            board[8] +
-            " | " +
-            board[9] +
-            "\n"
+            "   1   2   3 \n " +
+            " ~~~~~~~~~~~\n"+
+            "1| "+board[1]+" | "+board[2]+" | "+board[3]+" |\n"+
+            " ~~~~~~~~~~~~\n"+
+            "2| "+board[4]+" | "+board[5]+" | "+board[6]+" |\n"+
+            " ~~~~~~~~~~~~\n"+
+            "3| "+board[7]+" | "+board[8]+" | "+board[9]+" |\n"+
+            " ~~~~~~~~~~~~\n"
         );
       }
 
-      function isInt(value) {
-        var x;
-        if (isNaN(value)) {
-          return false;
-        }
-        x = parseFloat(value);
-        return (x | 0) === x;
-      }
+      // function isInt(value) {
+      //   var x;
+      //   if (isNaN(value)) {
+      //     return false;
+      //   }
+      //   x = parseFloat(value);
+      //   return (x | 0) === x;
+      // }
 
       function validateMove(position, player) {
         if (position === "resign") {
@@ -86,7 +83,7 @@ function startGame() {
 
           process.exit(1);
         }
-        return isInt(position) && board[position] === " ";
+        return position && board[position] === " ";
       }
 
       var winCombinations = [
