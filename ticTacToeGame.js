@@ -64,14 +64,14 @@ function startGame() {
         );
       }
 
-      // function isInt(value) {
-      //   var x;
-      //   if (isNaN(value)) {
-      //     return false;
-      //   }
-      //   x = parseFloat(value);
-      //   return (x | 0) === x;
-      // }
+      function isInt(value) {
+        var x;
+        if (isNaN(value)) {
+          return false;
+        }
+        x = parseFloat(value);
+        return (x | 0) === x;
+      }
 
       function validateMove(position, player) {
         if (position === "resign") {
@@ -83,7 +83,7 @@ function startGame() {
 
           process.exit(1);
         }
-        return position && board[position] === " ";
+        return isInt(position) && board[position] === " ";
       }
 
       var winCombinations = [
