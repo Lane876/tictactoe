@@ -1,5 +1,4 @@
 const prompt = require("prompt");
-const { error } = require("console");
 
 function startGame() {
   prompt.start();
@@ -16,14 +15,13 @@ function startGame() {
     if (result.PlayerX && result.PlayerO) {
       console.log(
         `Game started: ${result.PlayerX} has the first move \n` +
-
-         "    1   2   3 \n"+
-          "  ~~~~~~~~~~~~~\n"+
-        "1 |   |   |   |\n"+
-          "  ~~~~~~~~~~~~~\n"+
-        "2 |   |   |   |\n"+
-          "  ~~~~~~~~~~~~~\n"+
-        "3 |   |   |   |\n"+
+          "    1   2   3 \n" +
+          "  ~~~~~~~~~~~~~\n" +
+          "1 |   |   |   |\n" +
+          "  ~~~~~~~~~~~~~\n" +
+          "2 |   |   |   |\n" +
+          "  ~~~~~~~~~~~~~\n" +
+          "3 |   |   |   |\n" +
           "  ~~~~~~~~~~~~~\n"
       );
 
@@ -37,15 +35,15 @@ function startGame() {
         7: " ",
         8: " ",
         9: " ",
-        '1 1': " ",
-        '2 1': " ",
-        '3 1': " ",
-        '1 2': " ",
-        '2 2': " ",
-        '3 2': " ",
-        '1 3': " ",
-        '2 3': " ",
-        '3 3': " ",
+        "1 1": " ",
+        "2 1": " ",
+        "3 1": " ",
+        "1 2": " ",
+        "2 2": " ",
+        "3 2": " ",
+        "1 3": " ",
+        "2 3": " ",
+        "3 3": " ",
       };
 
       function boardSchema(position, mark) {
@@ -56,13 +54,31 @@ function startGame() {
         console.log(
           "\n" +
             "   1   2   3 \n " +
-            " ~~~~~~~~~~~\n"+
-            "1| "+board[1]+" | "+board[2]+" | "+board[3]+" |\n"+
-            " ~~~~~~~~~~~~\n"+
-            "2| "+board[4]+" | "+board[5]+" | "+board[6]+" |\n"+
-            " ~~~~~~~~~~~~\n"+
-            "3| "+board[7]+" | "+board[8]+" | "+board[9]+" |\n"+
-            " ~~~~~~~~~~~~\n"
+            " ~~~~~~~~~~~~~\n" +
+            "1 | " +
+            board[1] +
+            " | " +
+            board[2] +
+            " | " +
+            board[3] +
+            " |\n" +
+            "  ~~~~~~~~~~~~~\n" +
+            "2 | " +
+            board[4] +
+            " | " +
+            board[5] +
+            " | " +
+            board[6] +
+            " |\n" +
+            "  ~~~~~~~~~~~~~\n" +
+            "3 | " +
+            board[7] +
+            " | " +
+            board[8] +
+            " | " +
+            board[9] +
+            " |\n" +
+            "  ~~~~~~~~~~~~~\n"
         );
       }
 
@@ -85,7 +101,7 @@ function startGame() {
 
           process.exit(1);
         }
-        return (position) && board[position] === " ";
+        return position && board[position] === " ";
       }
 
       var winCombinations = [
@@ -133,52 +149,47 @@ function startGame() {
         prompt.start();
         prompt.get(["position"], function (err, result) {
           if (validateMove(result.position, player) === true) {
-            if(result.position === '1 1' && board[1] === " "){
-              result.position = 1
-              board['1 1'] = 1
+            if (result.position === "1 1" && board[1] === " ") {
+              result.position = 1;
+              board["1 1"] = 1;
             }
-            if(result.position === '2 1' && board[2] === " "){
-              result.position = 2
-              board['2 1'] = 2
+            if (result.position === "2 1" && board[2] === " ") {
+              result.position = 2;
+              board["2 1"] = 2;
             }
-            if(result.position === '3 1' && board[3] === " "){
-              result.position = 3
-              board['3 1'] = 3
+            if (result.position === "3 1" && board[3] === " ") {
+              result.position = 3;
+              board["3 1"] = 3;
+            }
+            if (result.position === "1 2" && board[4] === " ") {
+              result.position = 4;
+              board["1 2"] = 4;
+            }
+            if (result.position === "2 2" && board[5] === " ") {
+              result.position = 5;
+              board["2 2"] = 5;
+            }
+            if (result.position === "3 2" && board[6] === " ") {
+              result.position = 6;
+              board["3 2"] = 6;
+            }
+            if (result.position === "1 3" && board[7] === " ") {
+              result.position = 7;
+              board["1 3"] = 7;
+            }
+            if (result.position === "2 3" && board[8] === " ") {
+              result.position = 8;
+              board["2 3"] = 8;
+            }
+            if (result.position === "3 3" && board[9] === " ") {
+              result.position = 9;
+              board["3 3"] = 9;
+            }
 
-            }
-            if(result.position === '1 2' && board[4] === " "){
-              result.position = 4
-              board['1 2'] = 4
-            }
-            if(result.position === '2 2' && board[5] === " "){
-              result.position = 5
-              board['2 2'] = 5
-
-            }
-            if(result.position === '3 2' && board[6] === " "){
-              result.position = 6
-              board['3 2'] = 6
-
-            }
-            if(result.position === '1 3' && board[7] === " "){
-              result.position = 7
-              board['1 3'] = 7
-
-            }
-            if(result.position === '2 3' && board[8] === " "){
-              result.position = 8
-              board['2 3'] = 8
-
-            }
-            if(result.position === '3 3' && board[9] === " "){
-              result.position = 9
-              board['3 3'] = 9
-            }
-           
             boardSchema(result.position, player);
             returnBoard();
             if (checkWin(player) === true) {
-              if ((player === "X")) {
+              if (player === "X") {
                 console.log(`${first} wins!`);
                 prompt.get(["Rematch"], function (err, res) {
                   var resp = res.Rematch;
